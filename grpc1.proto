@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package chat;
+
+service ChatService {
+  rpc streamChannel(stream StreamRequest) returns (stream StreamResponse);
+}
+
+message StreamRequest {
+  string message = 1; // 클라이언트에서 서버로 보내는 메시지
+}
+
+message StreamResponse {
+  int32 currentCount = 1; // 현재 접속자 수
+  string responseMessage = 2; // 서버에서 클라이언트로 보내는 응답 메시지
+}
